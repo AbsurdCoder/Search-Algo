@@ -1,5 +1,9 @@
 """
 Function to call search algos
+1. Linear Search
+2. Binary Search
+3. Hash Search
+4. Tree Search (Binary Tree)
 """
 
 
@@ -24,4 +28,14 @@ def binary_search(arr, target):
 
 def hash_table_search(data_in_dict, target):
     return data_in_dict.get(target, None)
+
+def tree_search(arr, target):
+    # Create Binary tree and search
+    import tree_def as t
+    tree = t.TreeNode(arr[0])
+    for each_val in arr:
+        tree.insert(each_val)
+
+    # Search
+    return tree.search_tree(target)
 

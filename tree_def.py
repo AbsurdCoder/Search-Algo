@@ -28,12 +28,20 @@ class TreeNode:
         print(self.value)
         if self.right:
             self.right.display_tree()
-    
+
+    def search_tree(self, target):
+        if self.value == target:
+            return 1
+        if self.value > target:
+            return self.search_tree(self.left, target)
+        else:
+            return self.search_tree(self.right, target)
+        return -1
 
 values = [10, 5, 15, 3, 7, 12]
 root = 11
 t = TreeNode(root)
 for val in values:
-    root = t.insert(val)
+    t.insert(val)
 
 t.display_tree()
