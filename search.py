@@ -4,6 +4,8 @@ Function to call search algos
 2. Binary Search
 3. Hash Search
 4. Tree Search (Binary Tree)
+5. Depth First Search - Stack
+6. Breadth First Search - Queue
 """
 
 
@@ -38,4 +40,30 @@ def tree_search(arr, target):
 
     # Search
     return tree.search_tree(target)
+
+from collections import deque
+
+def df_search(graph, start, target, visited=None):
+    if visited == None:
+        visited = set()
+    if start == target:
+        return 1
+    visited.add(start)
+    for neighbor in graph.get(start, []):
+        if neighbor not in visited:
+            if df_search(graph, neighbor, target, visited):
+                return 1
+    return -1
+
+def bf_search(graph, start, target, visited=None):
+    visited = set()
+    queue = deque([start])
+    while queue:
+        node = queue.popleft()
+        if node == target:
+            return 1
+        if node not in visited:
+            visited.add(node)
+            queue.extend(graph.get(node,[]))
+    return -1
 
